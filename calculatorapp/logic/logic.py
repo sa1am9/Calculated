@@ -1,3 +1,4 @@
+from __future__ import division
 import sys
 import traceback
 import collections
@@ -17,11 +18,6 @@ from sympy.core.function import FunctionClass
 from sympy.parsing.sympy_parser import stringify_expr, eval_expr, \
     standard_transformations, convert_xor, TokenError
 
-PREEXEC = """from __future__ import division
-from sympy import *
-import sympy
-from sympy.solvers.diophantine import diophantine
-"""
 
 
 def mathjax_latex(*args):
@@ -103,7 +99,14 @@ class SymPyGamma(object):
 
     def eval_input(self, s):
         namespace = {}
-        # exec PREEXEC in {}, namespace
+
+        # from sympy import *
+        import sympy
+        from sympy.solvers.diophantine import diophantine
+
+
+        # exec(PREEXEC)
+
 
         def plot(f=None, **kwargs):
             """Plot functions. Not the same as SymPy's plot.
