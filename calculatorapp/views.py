@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
-from calculatorapp.logic.logic import SymPyGamma
+# from calculatorapp.logic.logic import SymPyGamma
 import wolframalpha
 def index(request):
     return render(request,'index.html')
