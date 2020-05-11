@@ -18,15 +18,15 @@ def input(request):
         client = wolframalpha.Client('PL5HW2-Q2XGXA6RAV')
         res = client.query(q)
         if not res:
-            r = [{
+            mydictionary = [{
                     "title": "Input",
                     "input": input,
                     "output": "Can't handle the input."
             }]
-
-        mydictionary = {
+        else: mydictionary = {
             "q": q,
             "ans": next(res.results).text,
+            "pic": res['pod'][1]['subpod']['img']['@src'],
             "error": False,
             "result": True
         }
